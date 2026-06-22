@@ -324,6 +324,29 @@
             activeUser = null;
             evaluateApplicationSessionState();
         }
-    </script>
+    </script>// Admin Panel Lottery & Withdrawal Logic
+function triggerAdminLottery(uid) {
+    const user = usersDb.find(u => u.uid === uid);
+    if (!user) return;
+
+    // Random Lottery Bonus between $1 to $10
+    const bonus = Math.floor(Math.random() * 10) + 1;
+    user.usdBalance += bonus;
+    
+    localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+    alert(`🎉 Lottery Result: ${user.name}-ke $${bonus} USD bonus award kora hoyeche!`);
+    populateAdminTable();
+}
+
+function processWithdrawal(uid) {
+    const user = usersDb.find(u => u.uid === uid);
+    if (confirm(`⚠️ Admin Verification: ${user.name}-er $${user.usdBalance.toFixed(2)} USD cashout approve korben?`)) {
+        user.usdBalance = 0; // Payment cleared
+        localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+        alert(`✅ Payment success! ${user.name}-er network record clear kora hoyeche.`);
+        populateAdminTable();
+    }
+}
+
 </body>
 </html>
