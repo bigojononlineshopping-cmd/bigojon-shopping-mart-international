@@ -438,7 +438,37 @@
 4. Replace all text with the code box above.
 5. Scroll down and click the green **Commit changes** button.
     </script>
-</body>
+</body><!-- Payment Node Selector -->
+<div>
+    <label class="block text-sm font-bold text-gray-700 mb-2">Select Remittance Channel</label>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
+            <input type="radio" name="gateway" value="bKash" required class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('bKash')">
+            bKash
+        </label>
+        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
+            <input type="radio" name="gateway" value="Nagad" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('Nagad')">
+            Nagad
+        </label>
+        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
+            <input type="radio" name="gateway" value="USDT" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('USDT')">
+            USDT (TRC20)
+        </label>
+        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
+            <input type="radio" name="gateway" value="BTC" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('BTC')">
+            Bitcoin (BTC)
+        </label>
+        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
+            <input type="radio" name="gateway" value="ETH" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('ETH')">
+            Ethereum (ETH)
+        </label>
+        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
+            <input type="radio" name="gateway" value="BNB" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('BNB')">
+            BNB (BSC)
+        </label>
+    </div>
+</div>
+
 </html>
 
 </html>
