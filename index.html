@@ -114,5 +114,325 @@
         </div>
     </footer>
 
+</body><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Jon Shopping Mart International</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased relative">
+
+    <div class="bg-emerald-700 text-white text-center py-2 text-xs font-semibold tracking-wider uppercase px-4">
+        Global Shipping Available | Secure Crypto & Fiat Payments Accepted
+    </div>
+
+    <header class="bg-white shadow-xs sticky top-0 z-40 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold text-emerald-600 tracking-tight">
+                BIG JON <span class="text-gray-900">INTERNATIONAL</span>
+            </a>
+            
+            <nav class="hidden md:flex space-x-8 font-medium text-gray-600">
+                <a href="#" class="hover:text-emerald-600 transition">Home</a>
+                <a href="#gallery" class="hover:text-emerald-600 transition">Product Gallery</a>
+                <a href="#checkout-section" class="hover:text-emerald-600 transition">Secure Checkout</a>
+                <a href="#riddle-section" class="hover:text-emerald-600 transition">Fun Zone</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleCart()" class="relative p-2 text-gray-600 hover:text-emerald-600 transition cursor-pointer" aria-label="Shopping Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span id="cart-count" class="absolute top-0 right-0 bg-emerald-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 max-w-full flex transform translate-x-full transition duration-300 ease-in-out z-50">
+        <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+            <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+                <h2 class="text-lg font-bold text-gray-900">Order Summary</h2>
+                <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-500 text-2xl cursor-pointer" aria-label="Close Cart">&times;</button>
+            </div>
+            <div id="cart-items" class="flex-1 p-6 overflow-y-auto space-y-4">
+                <p id="empty-cart-msg" class="text-gray-400 text-center py-8">Your shopping cart is currently empty.</p>
+            </div>
+            <div class="p-6 border-t border-gray-100 bg-gray-50">
+                <div class="flex justify-between text-base font-bold text-gray-900 mb-4">
+                    <p>Estimated Total</p>
+                    <p id="cart-total">$0.00</p>
+                </div>
+                <a href="#checkout-section" onclick="toggleCart()" class="w-full text-center block bg-emerald-600 text-white py-3 rounded-xl font-semibold shadow-md hover:bg-emerald-700 transition">
+                    Proceed to Payment
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section class="bg-emerald-50/60 py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-emerald-600 font-semibold uppercase tracking-wider text-sm bg-emerald-100 px-3 py-1 rounded-full">International Quality</span>
+                <h1 class="text-4xl md:text-5xl font-black text-gray-900 mt-4 mb-6 leading-tight">Fresh Essentials <br>Delivered To Your Door</h1>
+                <p class="text-gray-600 mb-8 text-lg leading-relaxed">Shop your daily needs from Big Jon Shopping Mart International. Get the freshest products at the best market prices.</p>
+                <a href="#gallery" class="bg-emerald-600 text-white px-8 py-3.5 rounded-xl font-semibold shadow-md hover:bg-emerald-700 transition inline-block">Shop Now</a>
+            </div>
+            <div class="flex justify-center">
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Groceries Banner" class="w-full h-64 md:h-96 object-cover rounded-3xl shadow-md border border-emerald-100">
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Premium Product Gallery</h2>
+            <p class="text-gray-500 mt-3 text-lg">Filter through our globally sourced premium selections.</p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button onclick="filterCategory('all')" class="cat-btn bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-xs cursor-pointer transition">All Collections</button>
+            <button onclick="filterCategory('groceries')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-6 py-2.5 rounded-full font-semibold hover:border-emerald-500 cursor-pointer transition">Premium Groceries</button>
+            <button onclick="filterCategory('digital')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-6 py-2.5 rounded-full font-semibold hover:border-emerald-500 cursor-pointer transition">Digital Vouchers</button>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="product-item bg-white rounded-2xl border border-gray-150 p-4 hover:shadow-xl transition flex flex-col justify-between" data-category="groceries">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=400&h=300&q=80" alt="Organic Mangoes" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <h3 class="font-bold text-gray-900 text-lg mb-1">Fresh Organic Mangoes</h3>
+                    <p class="text-emerald-600 font-black text-lg mb-4">$4.99 <span class="text-xs text-gray-400 font-normal">/ kg</span></p>
+                </div>
+                <button onclick="addToCart('Fresh Organic Mangoes', 4.99)" class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-900 font-bold py-3 rounded-xl transition cursor-pointer">Add to Cart</button>
+            </div>
+
+            <div class="product-item bg-white rounded-2xl border border-gray-150 p-4 hover:shadow-xl transition flex flex-col justify-between" data-category="groceries">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&h=300&q=80" alt="Basmati Rice" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <h3 class="font-bold text-gray-900 text-lg mb-1">Premium Basmati Rice</h3>
+                    <p class="text-emerald-600 font-black text-lg mb-4">$2.50 <span class="text-xs text-gray-400 font-normal">/ kg</span></p>
+                </div>
+                <button onclick="addToCart('Premium Basmati Rice', 2.50)" class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-900 font-bold py-3 rounded-xl transition cursor-pointer">Add to Cart</button>
+            </div>
+
+            <div class="product-item bg-white rounded-2xl border border-gray-150 p-4 hover:shadow-xl transition flex flex-col justify-between" data-category="groceries">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=400&h=300&q=80" alt="Sunflower Oil" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <h3 class="font-bold text-gray-900 text-lg mb-1">Pure Sunflower Oil (1L)</h3>
+                    <p class="text-emerald-600 font-black text-lg mb-4">$3.75</p>
+                </div>
+                <button onclick="addToCart('Pure Sunflower Oil (1L)', 3.75)" class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-900 font-bold py-3 rounded-xl transition cursor-pointer">Add to Cart</button>
+            </div>
+
+            <div class="product-item bg-white rounded-2xl border border-gray-150 p-4 hover:shadow-xl transition flex flex-col justify-between" data-category="digital">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=400&h=300&q=80" alt="Digital Shopping Gift Card" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <h3 class="font-bold text-gray-900 text-lg mb-1">Store Digital Voucher</h3>
+                    <p class="text-emerald-600 font-black text-lg mb-4">$10.00</p>
+                </div>
+                <button onclick="addToCart('Store Digital Voucher', 10.00)" class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-900 font-bold py-3 rounded-xl transition cursor-pointer">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="checkout-section" class="bg-gray-100 py-16 border-t border-gray-200">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-150">
+                <h3 class="text-2xl font-extrabold text-gray-900 mb-6 text-center tracking-tight">Secure Financial Settlement</h3>
+                
+                <div class="bg-emerald-50 rounded-2xl p-5 flex justify-between items-center mb-8 border border-emerald-100">
+                    <span class="font-bold text-emerald-900">Total Settlement Balance Due:</span>
+                    <span id="checkout-payable" class="text-3xl font-black text-emerald-700">$0.00</span>
+                </div>
+
+                <form id="orderForm" onsubmit="handleOrderSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Customer Full Name</label>
+                            <input type="text" required class="w-full p-3 rounded-xl border border-gray-200 focus:outline-emerald-500 bg-gray-50">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Contact Phone Line</label>
+                            <input type="tel" required class="w-full p-3 rounded-xl border border-gray-200 focus:outline-emerald-500 bg-gray-50">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Select Remittance Channel</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <label class="border border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
+                                <input type="radio" name="gateway" value="bKash" required class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('bKash')">
+                                bKash
+                            </label>
+                            <label class="border border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
+                                <input type="radio" name="gateway" value="Nagad" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('Nagad')">
+                                Nagad
+                            </label>
+                            <label class="border border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
+                                <input type="radio" name="gateway" value="Bank" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('Bank')">
+                                Bank Wire
+                            </label>
+                            <label class="border border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
+                                <input type="radio" name="gateway" value="USDT" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('USDT')">
+                                USDT (TRC20)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="gateway-info-box" class="hidden bg-gray-900 text-gray-100 border border-gray-800 rounded-2xl p-5 text-sm space-y-2 font-mono">
+                        </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Transaction ID Reference</label>
+                            <input type="text" required id="trx-id" placeholder="Reference Code" class="w-full p-3 rounded-xl border border-gray-200 focus:outline-emerald-500 bg-gray-50 font-mono">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Remittance Receipt Image</label>
+                            <input type="file" required id="receipt-file" accept="image/*" class="w-full p-2.5 rounded-xl border border-gray-200 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold text-lg shadow-md hover:bg-emerald-700 transition cursor-pointer uppercase tracking-wider">
+                        Submit Audit & Verify Receipt
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="riddle-section" class="bg-white py-16 border-t border-gray-200">
+        <div class="max-w-md mx-auto px-4 text-center">
+            <div class="bg-amber-50 rounded-3xl p-8 border border-amber-200 shadow-xs">
+                <span class="text-2xl">🧠</span>
+                <h4 class="text-xl font-extrabold text-amber-900 mt-2 mb-4 tracking-tight">Daily Riddle (పొడుపుకథ)</h4>
+                <p class="text-gray-700 font-medium text-lg italic mb-6">"మా నగర్ కొడుకు ఎన్ని చేడీ బయట?"</p>
+                
+                <button onclick="document.getElementById('riddle-answer').classList.toggle('hidden')" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded-xl text-sm transition cursor-pointer">
+                    Reveal Answer
+                </button>
+                
+                <div id="riddle-answer" class="hidden mt-6 bg-white p-4 rounded-xl border border-amber-100 transition-all">
+                    <p class="text-emerald-600 font-black text-xl">Answer: ఉల్లిపాయ (Onion)</p>
+                    <p class="text-gray-500 text-xs mt-1">The layers represent garments/clothes wrapping it inside out!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-950 text-gray-500 py-12 text-center border-t border-gray-900 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <p class="text-white font-bold text-base tracking-wide mb-2">Big Jon Shopping Mart International &copy; 2026</p>
+            <p class="opacity-75">All transactional interfaces are secured via cryptographic assertions. End-to-end processing guaranteed.</p>
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        let totalPayable = 0;
+
+        function toggleCart() {
+            document.getElementById('cart-sidebar').classList.toggle('translate-x-full');
+        }
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+            const checkoutPayable = document.getElementById('checkout-payable');
+            
+            container.innerHTML = '';
+            totalPayable = 0;
+            let count = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 text-center py-8">Your shopping cart is currently empty.</p>';
+            } else {
+                cart.forEach(item => {
+                    totalPayable += item.price * item.quantity;
+                    count += item.quantity;
+
+                    const div = document.createElement('div');
+                    div.className = 'flex justify-between items-center bg-gray-50 p-4 rounded-xl border border-gray-150';
+                    div.innerHTML = `
+                        <div>
+                            <p class="font-bold text-gray-900">${item.name}</p>
+                            <p class="text-xs text-gray-500">$${item.price.toFixed(2)} x ${item.quantity}</p>
+                        </div>
+                        <p class="font-bold text-emerald-600">$${(item.price * item.quantity).toFixed(2)}</p>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            cartCount.innerText = count;
+            cartTotal.innerText = `$${totalPayable.toFixed(2)}`;
+            checkoutPayable.innerText = `$${totalPayable.toFixed(2)}`;
+        }
+
+        function filterCategory(category) {
+            const items = document.querySelectorAll('.product-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                btn.className = "cat-btn bg-white text-gray-600 border border-gray-200 px-6 py-2.5 rounded-full font-semibold hover:border-emerald-500 cursor-pointer transition";
+            });
+            event.target.className = "cat-btn bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-xs cursor-pointer transition";
+        }
+
+        function updatePaymentDetails(method) {
+            const infoBox = document.getElementById('gateway-info-box');
+            infoBox.classList.remove('hidden');
+            
+            let htmlContent = '';
+            if (method === 'bKash') {
+                htmlContent = `<strong>CHANNEL: bKash International Remit Node</strong><br>Merchant Account: +88017XXXXXXXX<br>Instruction: Please complete your wallet payment. Include your name/invoice sequence inside the optional reference element field.`;
+            } else if (method === 'Nagad') {
+                htmlContent = `<strong>CHANNEL: Nagad Business Clearing</strong><br>Merchant Account: +88019XXXXXXXX<br>Instruction: Execute automated checkout terminal processes using the corporate merchant destination identity.`;
+            } else if (method === 'Bank') {
+                htmlContent = `<strong>CHANNEL: Corporate SWIFT Wire Transfer</strong><br>Institution: International Commerce & Settlement Bank Ltd.<br>Account Protocol: 9874-2311-5432-110<br>Routing Node: 02026115`;
+            } else if (method === 'USDT') {
+                htmlContent = `<strong>CHANNEL: Stablecoin Ledger Protocol (TRC20 Network)</strong><br>Cryptographic Address Wallet: <span class="text-amber-400 font-mono select-all">TY3wR8fJk89SmdM1Xz82K91LaPqWsX4z2A</span><br>Warning: Transfer via alternative network infrastructure assets will cause definitive operational asset loss.`;
+            }
+            infoBox.innerHTML = htmlContent;
+        }
+
+        function handleOrderSubmit(event) {
+            event.preventDefault();
+            if (totalPayable === 0) {
+                alert('Validation Failure: Balance requirements show 0.00 base values. Please catalog system items to your active summary node.');
+                return;
+            }
+            const trxId = document.getElementById('trx-id').value;
+            alert(`Audit Completed: Balance verification process sequence initiated successfully.\nReference: ${trxId}\nOur billing department will process shipment verification.`);
+            
+            cart = [];
+            updateCartUI();
+            document.getElementById('orderForm').reset();
+            document.getElementById('gateway-info-box').classList.add('hidden');
+        }
+    </script>
 </body>
+</html>
+
 </html>
