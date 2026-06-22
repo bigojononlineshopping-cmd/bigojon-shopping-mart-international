@@ -419,4 +419,65 @@ function processWithdrawal(uid) {
     }
 </script>
 
-</html>
+</html><!-- INTEGRATED MARKET PLUS & GATEWAY SECTION -->
+<section id="market-plus-section" class="max-w-7xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-black text-slate-900 mb-8 uppercase tracking-tighter">
+        <i class="fa-solid fa-store text-emerald-600 mr-2"></i> Market Plus
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Products Gallery -->
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 text-center hover:shadow-md transition">
+                <div class="h-24 bg-slate-100 rounded-lg mb-4 flex items-center justify-center font-black text-slate-400">NODE</div>
+                <h4 class="font-bold text-sm">Cloud Node Pro</h4>
+                <p class="text-emerald-600 font-black">$50.00 USD</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 text-center hover:shadow-md transition">
+                <div class="h-24 bg-slate-100 rounded-lg mb-4 flex items-center justify-center font-black text-slate-400">PACK</div>
+                <h4 class="font-bold text-sm">Growth Pack</h4>
+                <p class="text-emerald-600 font-black">$100.00 USD</p>
+            </div>
+        </div>
+
+        <!-- Payment Gateway Options -->
+        <div class="bg-slate-900 p-6 rounded-2xl text-white">
+            <h3 class="font-bold mb-5 flex items-center gap-2"><i class="fa-solid fa-credit-card text-amber-400"></i> Payment Gateway</h3>
+            <div class="space-y-3">
+                <button onclick="processPayment('Bkash')" class="w-full p-3 bg-pink-600 hover:bg-pink-700 rounded-xl font-bold transition">Pay with Bkash</button>
+                <button onclick="processPayment('Nagad')" class="w-full p-3 bg-orange-600 hover:bg-orange-700 rounded-xl font-bold transition">Pay with Nagad</button>
+                <button onclick="processPayment('Bank')" class="w-full p-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-bold transition">Bank Transfer</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // English Version Admin & Payment Logic
+    function processPayment(method) {
+        alert(`Redirecting to ${method} gateway. Please confirm your transaction ID.`);
+    }
+
+    function triggerAdminLottery(uid) {
+        const user = usersDb.find(u => u.uid === uid);
+        if (!user) return;
+        
+        const bonus = Math.floor(Math.random() * 10) + 1;
+        user.usdBalance += bonus;
+        
+        localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+        alert(`🎉 Lottery Result: A bonus of $${bonus} USD has been awarded to ${user.name}!`);
+        if(typeof populateAdminTable === 'function') populateAdminTable();
+    }
+
+    function processWithdrawal(uid) {
+        const user = usersDb.find(u => u.uid === uid);
+        if (confirm(`⚠️ Admin Verification: Do you want to approve the withdrawal of $${user.usdBalance.toFixed(2)} USD for ${user.name}?`)) {
+            user.usdBalance = 0;
+            localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+            alert(`✅ Payment success! Transaction record for ${user.name} has been cleared.`);
+            if(typeof populateAdminTable === 'function') populateAdminTable();
+        }
+    }
+</script>
+
