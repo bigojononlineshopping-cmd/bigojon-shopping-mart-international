@@ -3,492 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Jon Shopping Mart</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Genuine HD Finance Network & Admin Core</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased relative">
 
-    <!-- Navigation Bar (Header) -->
-    <header class="bg-white shadow-xs sticky top-0 z-50 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-extrabold text-emerald-600 tracking-tight">Big Jon <span class="text-gray-900">Mart</span></a>
-            
-            <nav class="hidden md:flex space-x-8 font-medium text-gray-600">
-                <a href="#" class="hover:text-emerald-600 transition">Home</a>
-                <a href="#" class="hover:text-emerald-600 transition">Shop All</a>
-                <a href="#" class="hover:text-emerald-600 transition">Deals</a>
-                <a href="#" class="hover:text-emerald-600 transition">Contact</a>
-            </nav>
-            
-            <div class="flex items-center space-x-4">
-                <button class="relative p-2 text-gray-600 hover:text-emerald-600 transition cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    <span class="absolute top-0 right-0 bg-emerald-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+    <!-- System Announcement -->
+    <div class="bg-gradient-to-r from-emerald-700 via-slate-900 to-blue-900 text-white text-center py-2.5 text-xs font-bold px-4 shadow-md">
+        <span><i class="fa-solid fa-shield-halved text-emerald-400 animate-pulse"></i> Genuine HD Finance Network: Digit to USD Conversion Engine Active. Admin Control Console Enabled!</span>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-xs sticky top-0 z-40 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-black text-emerald-600 tracking-tight flex items-center gap-2">
+                <span class="bg-emerald-600 text-white p-1.5 rounded-lg text-xs"><i class="fa-solid fa-wallet"></i></span>
+                <span>HD <span class="text-slate-900 font-extrabold">FINANCE NET</span></span>
+            </a>
+            <div class="flex items-center space-x-3">
+                <div id="header-user-status" class="text-xs font-bold"></div>
+                <button onclick="toggleAdminPanel()" id="admin-toggle-btn" class="hidden bg-red-600 hover:bg-red-700 text-white text-[11px] font-black uppercase px-3 py-1.5 rounded-lg transition cursor-pointer">
+                    <i class="fa-solid fa-lock-open mr-1"></i> Admin Panel
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Hero / Banner Section -->
-    <section class="bg-emerald-50/60 py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-emerald-600 font-semibold uppercase tracking-wider text-sm bg-emerald-100 px-3 py-1 rounded-full">Top Quality Groceries</span>
-                <h1 class="text-4xl md:text-5xl font-black text-gray-900 mt-4 mb-6 leading-tight">Fresh Essentials <br>Delivered To Your Door</h1>
-                <p class="text-gray-600 mb-8 text-lg leading-relaxed">Shop your daily grocery needs from Big Jon Shopping Mart. Get the freshest products at the most affordable prices.</p>
-                <a href="#" class="bg-emerald-600 text-white px-8 py-3.5 rounded-xl font-semibold shadow-md hover:bg-emerald-700 transition inline-block">Shop Now</a>
-            </div>
-            <div class="flex justify-center">
-                <!-- Placeholder for Hero Image -->
-                <div class="w-full h-64 md:h-96 bg-emerald-100 border border-emerald-200 rounded-3xl flex flex-col items-center justify-center text-emerald-800 p-6 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mb-2 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z" />
-                    </svg>
-                    <span class="font-bold text-lg">Shopping Mart Banner</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
 
-    <!-- Popular Products Section -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-        <div class="flex justify-between items-end mb-10">
-            <div>
-                <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Trending Products</h2>
-                <p class="text-gray-500 mt-1">Our customer's top picks for the week.</p>
-            </div>
-            <a href="#" class="text-emerald-600 font-semibold hover:underline hidden sm:block">View All Products &rarr;</a>
-        </div>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            <!-- Product 1 -->
-            <div class="bg-white rounded-2xl border border-gray-100 p-4 hover:shadow-lg hover:border-emerald-100 transition group flex flex-col justify-between">
-                <div>
-                    <div class="w-full h-48 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 mb-4 group-hover:bg-emerald-50/30 transition">[ Product Image ]</div>
-                    <h3 class="font-bold text-gray-800 text-lg mb-1 group-hover:text-emerald-600 transition">Fresh Organic Mangoes</h3>
-                    <p class="text-emerald-650 font-extrabold text-lg mb-4">$4.99 <span class="text-xs text-gray-400 font-normal">/ kg</span></p>
-                </div>
-                <button class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-800 font-semibold py-2.5 rounded-xl transition cursor-pointer">Add to Cart</button>
+        <!-- AUTHENTICATION WITH PERSONAL DIGITAL IDENTITY -->
+        <section id="auth-section" class="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-md border border-slate-200">
+            <div class="text-center mb-6">
+                <h2 id="auth-title" class="text-xl font-black text-slate-900 uppercase tracking-tight">Create Personal Digital Identity</h2>
+                <p class="text-xs text-slate-500 mt-1">Sign up to receive system Digits that convert into active USD Balance.</p>
             </div>
 
-            <!-- Product 2 -->
-            <div class="bg-white rounded-2xl border border-gray-100 p-4 hover:shadow-lg hover:border-emerald-100 transition group flex flex-col justify-between">
+            <form id="authForm" onsubmit="handleAuth(event)" class="space-y-4">
                 <div>
-                    <div class="w-full h-48 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 mb-4 group-hover:bg-emerald-50/30 transition">[ Product Image ]</div>
-                    <h3 class="font-bold text-gray-800 text-lg mb-1 group-hover:text-emerald-600 transition">Premium Basmati Rice</h3>
-                    <p class="text-emerald-650 font-extrabold text-lg mb-4">$2.50 <span class="text-xs text-gray-400 font-normal">/ kg</span></p>
+                    <label class="block text-[10px] font-bold text-slate-700 uppercase mb-1">Full Name (Digital ID Verification)</label>
+                    <input type="text" id="auth-name" required placeholder="John Doe" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:outline-emerald-500 font-medium">
                 </div>
-                <button class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-800 font-semibold py-2.5 rounded-xl transition cursor-pointer">Add to Cart</button>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-700 uppercase mb-1">Gmail Address</label>
+                    <input type="email" id="auth-email" required placeholder="name@gmail.com" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:outline-emerald-500 font-medium">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-700 uppercase mb-1">Secure Password</label>
+                    <input type="password" id="auth-pass" required placeholder="••••••••" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:outline-emerald-500">
+                </div>
+                <button type="submit" id="auth-submit-btn" class="w-full bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider cursor-pointer transition">
+                    Register Genuine Node
+                </button>
+            </form>
+            <div class="text-center mt-4">
+                <button onclick="toggleAuthMode()" id="auth-toggle-msg" class="text-xs text-emerald-700 hover:underline font-bold cursor-pointer">Already registered? Log In here</button>
+            </div>
+        </section>
+
+        <!-- DASHBOARD CORE -->
+        <div id="dashboard-core" class="hidden space-y-8">
+            
+            <!-- Ledger Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- User Profile info -->
+                <div class="bg-white p-6 rounded-2xl shadow-xs border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase"><i class="fa-solid fa-user-shield mr-1"></i> Genuine Verified ID</span>
+                        <h3 class="text-lg font-black text-slate-900 mt-3" id="user-display-name">Loading...</h3>
+                        <p class="text-xs text-slate-500 font-mono" id="user-display-id">ID: </p>
+                    </div>
+                    <button onclick="logout()" class="text-left text-xs font-bold text-red-600 mt-4 hover:underline cursor-pointer"><i class="fa-solid fa-right-from-bracket"></i> Disconnect Node</button>
+                </div>
+
+                <!-- DIGIT INPUT TO USD ENGINE -->
+                <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-md border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <span class="text-amber-400 font-bold text-[10px] uppercase tracking-widest block mb-1">Digit Conversion Module</span>
+                        <h4 class="text-xs text-slate-400">সিস্টেম থেকে প্রাপ্ত ডিজিট এখানে সাবমিট করলেই তা সাথে সাথে USD ব্যালেন্সে রূপান্তরিত হবে।</h4>
+                    </div>
+                    <div class="mt-4 flex gap-2">
+                        <input type="number" id="digit-input" placeholder="Enter Digits (e.g. 50)" class="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs font-mono text-emerald-400 focus:outline-emerald-500 font-bold">
+                        <button onclick="convertDigitToUsd()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs px-4 rounded-xl cursor-pointer transition uppercase">Convert</button>
+                    </div>
+                </div>
+
+                <!-- CURRENT CONVERTED BALANCE & CASH OUT -->
+                <div class="bg-gradient-to-br from-emerald-950 to-slate-900 text-white p-6 rounded-2xl border border-emerald-500/20 text-center flex flex-col justify-between items-center">
+                    <div>
+                        <span class="block text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1">Converted USD Balance</span>
+                        <span id="user-usd-balance" class="text-3xl font-black font-mono text-white">$0.00 <span class="text-xs text-emerald-400">USD</span></span>
+                        <p class="text-[10px] text-slate-400 mt-1" id="bdt-valuation">Value: 0 BDT</p>
+                    </div>
+                    <button onclick="triggerCashout()" class="w-full bg-white text-slate-950 font-black text-xs uppercase py-2.5 rounded-xl tracking-wider hover:bg-slate-100 transition shadow-md cursor-pointer mt-4">
+                        <i class="fa-solid fa-money-bill-transfer text-emerald-600 mr-1"></i> Cash Out to Taka (BDT)
+                    </button>
+                </div>
             </div>
 
-            <!-- Product 3 -->
-            <div class="bg-white rounded-2xl border border-gray-100 p-4 hover:shadow-lg hover:border-emerald-100 transition group flex flex-col justify-between">
-                <div>
-                    <div class="w-full h-48 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 mb-4 group-hover:bg-emerald-50/30 transition">[ Product Image ]</div>
-                    <h3 class="font-bold text-gray-800 text-lg mb-1 group-hover:text-emerald-600 transition">Pure Sunflower Oil (1L)</h3>
-                    <p class="text-emerald-650 font-extrabold text-lg mb-4">$3.75</p>
+            <!-- ADMIN CONTROL PANEL (EXCLUSIVE VIEW) -->
+            <section id="admin-panel-section" class="hidden bg-red-50 border-2 border-red-200 p-6 rounded-2xl space-y-6">
+                <div class="flex justify-between items-center border-b border-red-200 pb-3">
+                    <div>
+                        <h3 class="text-base font-black text-red-950 uppercase tracking-wide"><i class="fa-solid fa-triangle-exclamation text-red-600"></i> HD Finance Authority Network Console</h3>
+                        <p class="text-xs text-red-700">অ্যাডমিন এখান থেকে যেকোনো ফেক বা ক্ষতিকর পার্সোনাল ডিজিটাল আইডি সম্পূর্ণ ডিলিট করতে পারবেন।</p>
+                    </div>
+                    <span class="bg-red-600 text-white text-[9px] font-bold px-2 py-0.5 rounded font-mono">ROOT PRIVILEGES ACTIVE</span>
                 </div>
-                <button class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-800 font-semibold py-2.5 rounded-xl transition cursor-pointer">Add to Cart</button>
-            </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-700">
+                        <thead>
+                            <tr class="border-b border-red-200 text-red-900 font-bold uppercase text-[10px]">
+                                <th class="py-2">Digital Name</th>
+                                <th class="py-2">Gmail Address</th>
+                                <th class="py-2">Network Node ID</th>
+                                <th class="py-2 text-right">USD Balance</th>
+                                <th class="py-2 text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-users-table">
+                            <!-- Injected rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-            <!-- Product 4 -->
-            <div class="bg-white rounded-2xl border border-gray-100 p-4 hover:shadow-lg hover:border-emerald-100 transition group flex flex-col justify-between">
-                <div>
-                    <div class="w-full h-48 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 mb-4 group-hover:bg-emerald-50/30 transition">[ Product Image ]</div>
-                    <h3 class="font-bold text-gray-800 text-lg mb-1 group-hover:text-emerald-600 transition">Natural Honey (500g)</h3>
-                    <p class="text-emerald-650 font-extrabold text-lg mb-4">$6.20</p>
-                </div>
-                <button class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-800 font-semibold py-2.5 rounded-xl transition cursor-pointer">Add to Cart</button>
-            </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-            <p class="mb-2 text-white font-semibold text-lg">Big Jon Shopping Mart &copy; 2026</p>
-            <p class="text-sm opacity-75">All rights reserved. Freshness guaranteed.</p>
-        </div>
-    </footer>
-
-</body><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Jon Shopping Mart International</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body class="bg-gray-50 text-gray-800 antialiased relative">
-
-    <div class="bg-emerald-700 text-white text-center py-2 text-xs font-semibold tracking-wider uppercase px-4">
-        Global Shipping Available | Secure Crypto & Fiat Payments Accepted
-    </div>
-
-    <header class="bg-white shadow-xs sticky top-0 z-40 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-extrabold text-emerald-600 tracking-tight">
-                BIG JON <span class="text-gray-900">INTERNATIONAL</span>
-            </a>
-            
-            <nav class="hidden md:flex space-x-8 font-medium text-gray-600">
-                <a href="#" class="hover:text-emerald-600 transition">Home</a>
-                <a href="#gallery" class="hover:text-emerald-600 transition">Product Gallery</a>
-                <a href="#checkout-section" class="hover:text-emerald-600 transition">Secure Checkout</a>
-                <a href="#riddle-section" class="hover:text-emerald-600 transition">Fun Zone</a>
-            </nav>
-            
-            <div class="flex items-center space-x-4">
-                <button onclick="toggleCart()" class="relative p-2 text-gray-600 hover:text-emerald-600 transition cursor-pointer" aria-label="Shopping Cart">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    <span id="cart-count" class="absolute top-0 right-0 bg-emerald-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <div id="cart-sidebar" class="fixed inset-y-0 right-0 max-w-full flex transform translate-x-full transition duration-300 ease-in-out z-50">
-        <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
-            <div class="p-6 border-b border-gray-100 flex items-center justify-between">
-                <h2 class="text-lg font-bold text-gray-900">Order Summary</h2>
-                <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-500 text-2xl cursor-pointer" aria-label="Close Cart">&times;</button>
-            </div>
-            <div id="cart-items" class="flex-1 p-6 overflow-y-auto space-y-4">
-                <p id="empty-cart-msg" class="text-gray-400 text-center py-8">Your shopping cart is currently empty.</p>
-            </div>
-            <div class="p-6 border-t border-gray-100 bg-gray-50">
-                <div class="flex justify-between text-base font-bold text-gray-900 mb-4">
-                    <p>Estimated Total</p>
-                    <p id="cart-total">$0.00</p>
-                </div>
-                <a href="#checkout-section" onclick="toggleCart()" class="w-full text-center block bg-emerald-600 text-white py-3 rounded-xl font-semibold shadow-md hover:bg-emerald-700 transition">
-                    Proceed to Payment
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <section class="bg-emerald-50/60 py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-emerald-600 font-semibold uppercase tracking-wider text-sm bg-emerald-100 px-3 py-1 rounded-full">International Quality</span>
-                <h1 class="text-4xl md:text-5xl font-black text-gray-900 mt-4 mb-6 leading-tight">Fresh Essentials <br>Delivered To Your Door</h1>
-                <p class="text-gray-600 mb-8 text-lg leading-relaxed">Shop your daily needs from Big Jon Shopping Mart International. Get the freshest products at the best market prices.</p>
-                <a href="#gallery" class="bg-emerald-600 text-white px-8 py-3.5 rounded-xl font-semibold shadow-md hover:bg-emerald-700 transition inline-block">Shop Now</a>
-            </div>
-            <div class="flex justify-center">
-                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80" alt="Groceries Banner" class="w-full h-64 md:h-96 object-cover rounded-3xl shadow-md border border-emerald-100">
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">Premium Product Gallery</h2>
-            <p class="text-gray-500 mt-3 text-lg">Filter through our globally sourced premium selections.</p>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
-            <button onclick="filterCategory('all')" class="cat-btn bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-xs cursor-pointer transition">All Collections</button>
-            <button onclick="filterCategory('groceries')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-6 py-2.5 rounded-full font-semibold hover:border-emerald-500 cursor-pointer transition">Premium Groceries</button>
-            <button onclick="filterCategory('digital')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-6 py-2.5 rounded-full font-semibold hover:border-emerald-500 cursor-pointer transition">Digital Vouchers</button>
-        </div>
-
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="product-item bg-white rounded-2xl border border-gray-150 p-4 hover:shadow-xl transition flex flex-col justify-between" data-category="groceries">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=400&h=300&q=80" alt="Organic Mangoes" class="w-full h-48 object-cover rounded-xl mb-4">
-                    <h3 class="font-bold text-gray-900 text-lg mb-1">Fresh Organic Mangoes</h3>
-                    <p class="text-emerald-600 font-black text-lg mb-4">$4.99 <span class="text-xs text-gray-400 font-normal">/ kg</span></p>
-                </div>
-                <button onclick="addToCart('Fresh Organic Mangoes', 4.99)" class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-900 font-bold py-3 rounded-xl transition cursor-pointer">Add to Cart</button>
-            </div>
-
-            <div class="product-item bg-white rounded-2xl border border-gray-150 p-4 hover:shadow-xl transition flex flex-col justify-between" data-category="groceries">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&h=300&q=80" alt="Basmati Rice" class="w-full h-48 object-cover rounded-xl mb-4">
-                    <h3 class="font-bold text-gray-900 text-lg mb-1">Premium Basmati Rice</h3>
-                    <p class="text-emerald-600 font-black text-lg mb-4">$2.50 <span class="text-xs text-gray-400 font-normal">/ kg</span></p>
-                </div>
-                <button onclick="addToCart('Premium Basmati Rice', 2.50)" class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-900 font-bold py-3 rounded-xl transition cursor-pointer">Add to Cart</button>
-            </div>
-
-            <div class="product-item bg-white rounded-2xl border border-gray-150 p-4 hover:shadow-xl transition flex flex-col justify-between" data-category="groceries">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=400&h=300&q=80" alt="Sunflower Oil" class="w-full h-48 object-cover rounded-xl mb-4">
-                    <h3 class="font-bold text-gray-900 text-lg mb-1">Pure Sunflower Oil (1L)</h3>
-                    <p class="text-emerald-600 font-black text-lg mb-4">$3.75</p>
-                </div>
-                <button onclick="addToCart('Pure Sunflower Oil (1L)', 3.75)" class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-900 font-bold py-3 rounded-xl transition cursor-pointer">Add to Cart</button>
-            </div>
-
-            <div class="product-item bg-white rounded-2xl border border-gray-150 p-4 hover:shadow-xl transition flex flex-col justify-between" data-category="digital">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=400&h=300&q=80" alt="Digital Shopping Gift Card" class="w-full h-48 object-cover rounded-xl mb-4">
-                    <h3 class="font-bold text-gray-900 text-lg mb-1">Store Digital Voucher</h3>
-                    <p class="text-emerald-600 font-black text-lg mb-4">$10.00</p>
-                </div>
-                <button onclick="addToCart('Store Digital Voucher', 10.00)" class="w-full bg-gray-50 hover:bg-emerald-600 hover:text-white text-gray-900 font-bold py-3 rounded-xl transition cursor-pointer">Add to Cart</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="checkout-section" class="bg-gray-100 py-16 border-t border-gray-200">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6">
-            <div class="bg-white rounded-3xl p-8 shadow-md border border-gray-150">
-                <h3 class="text-2xl font-extrabold text-gray-900 mb-6 text-center tracking-tight">Secure Financial Settlement</h3>
-                
-                <div class="bg-emerald-50 rounded-2xl p-5 flex justify-between items-center mb-8 border border-emerald-100">
-                    <span class="font-bold text-emerald-900">Total Settlement Balance Due:</span>
-                    <span id="checkout-payable" class="text-3xl font-black text-emerald-700">$0.00</span>
-                </div>
-
-                <form id="orderForm" onsubmit="handleOrderSubmit(event)" class="space-y-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Customer Full Name</label>
-                            <input type="text" required class="w-full p-3 rounded-xl border border-gray-200 focus:outline-emerald-500 bg-gray-50">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Contact Phone Line</label>
-                            <input type="tel" required class="w-full p-3 rounded-xl border border-gray-200 focus:outline-emerald-500 bg-gray-50">
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2">Select Remittance Channel</label>
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                            <label class="border border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
-                                <input type="radio" name="gateway" value="bKash" required class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('bKash')">
-                                bKash
-                            </label>
-                            <label class="border border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
-                                <input type="radio" name="gateway" value="Nagad" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('Nagad')">
-                                Nagad
-                            </label>
-                            <label class="border border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
-                                <input type="radio" name="gateway" value="Bank" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('Bank')">
-                                Bank Wire
-                            </label>
-                            <label class="border border-gray-200 rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
-                                <input type="radio" name="gateway" value="USDT" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('USDT')">
-                                USDT (TRC20)
-                            </label>
-                        </div>
-                    </div>
-
-                    <div id="gateway-info-box" class="hidden bg-gray-900 text-gray-100 border border-gray-800 rounded-2xl p-5 text-sm space-y-2 font-mono">
-                        </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Transaction ID Reference</label>
-                            <input type="text" required id="trx-id" placeholder="Reference Code" class="w-full p-3 rounded-xl border border-gray-200 focus:outline-emerald-500 bg-gray-50 font-mono">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Remittance Receipt Image</label>
-                            <input type="file" required id="receipt-file" accept="image/*" class="w-full p-2.5 rounded-xl border border-gray-200 text-sm file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100">
-                        </div>
-                    </div>
-
-                    <button type="submit" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-bold text-lg shadow-md hover:bg-emerald-700 transition cursor-pointer uppercase tracking-wider">
-                        Submit Audit & Verify Receipt
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section id="riddle-section" class="bg-white py-16 border-t border-gray-200">
-        <div class="max-w-md mx-auto px-4 text-center">
-            <div class="bg-amber-50 rounded-3xl p-8 border border-amber-200 shadow-xs">
-                <span class="text-2xl">🧠</span>
-                <h4 class="text-xl font-extrabold text-amber-900 mt-2 mb-4 tracking-tight">Daily Riddle (పొడుపుకథ)</h4>
-                <p class="text-gray-700 font-medium text-lg italic mb-6">"మా నగర్ కొడుకు ఎన్ని చేడీ బయట?"</p>
-                
-                <button onclick="document.getElementById('riddle-answer').classList.toggle('hidden')" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-2 rounded-xl text-sm transition cursor-pointer">
-                    Reveal Answer
-                </button>
-                
-                <div id="riddle-answer" class="hidden mt-6 bg-white p-4 rounded-xl border border-amber-100 transition-all">
-                    <p class="text-emerald-600 font-black text-xl">Answer: ఉల్లిపాయ (Onion)</p>
-                    <p class="text-gray-500 text-xs mt-1">The layers represent garments/clothes wrapping it inside out!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-950 text-gray-500 py-12 text-center border-t border-gray-900 text-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <p class="text-white font-bold text-base tracking-wide mb-2">Big Jon Shopping Mart International &copy; 2026</p>
-            <p class="opacity-75">All transactional interfaces are secured via cryptographic assertions. End-to-end processing guaranteed.</p>
-        </div>
-    </footer>
-
+    <!-- SCRIPT ARCHITECTURE -->
     <script>
-        let cart = [];
-        let totalPayable = 0;
+        // Preset Conversion Rate: 1 USD = 120 BDT (Static Mapping Example)
+        const BDT_CONVERSION_RATE = 120;
 
-        function toggleCart() {
-            document.getElementById('cart-sidebar').classList.toggle('translate-x-full');
+        // Default Admin Simulation Account Setup
+        let usersDb = JSON.parse(localStorage.getItem('hd_finance_db')) || [
+            { uid: 'HD-NET-ADMIN', name: 'System Admin Console', email: 'admin@gmail.com', password: 'admin', usdBalance: 1000.00, isAdmin: true }
+        ];
+        if(!localStorage.getItem('hd_finance_db')) {
+            localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
         }
 
-        function addToCart(name, price) {
-            const existingItem = cart.find(item => item.name === name);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ name, price, quantity: 1 });
-            }
-            updateCartUI();
-        }
+        let activeUser = JSON.parse(sessionStorage.getItem('hd_finance_session')) || null;
+        let isSignUpMode = true;
 
-        function updateCartUI() {
-            const container = document.getElementById('cart-items');
-            const cartCount = document.getElementById('cart-count');
-            const cartTotal = document.getElementById('cart-total');
-            const checkoutPayable = document.getElementById('checkout-payable');
+        document.addEventListener('DOMContentLoaded', () => {
+            evaluateApplicationSessionState();
+        });
+
+        function toggleAuthMode() {
+            isSignUpMode = !isSignUpMode;
+            document.getElementById('auth-title').innerText = isSignUpMode ? 'Create Personal Digital Identity' : 'Secure Handshake Login';
+            document.getElementById('auth-submit-btn').innerText = isSignUpMode ? 'Register Genuine Node' : 'Initialize Node Session';
+            document.getElementById('auth-toggle-msg').innerText = isSignUpMode ? 'Already registered? Log In here' : 'New here? Register Personal Digital ID';
             
-            container.innerHTML = '';
-            totalPayable = 0;
-            let count = 0;
-
-            if (cart.length === 0) {
-                container.innerHTML = '<p class="text-gray-400 text-center py-8">Your shopping cart is currently empty.</p>';
-            } else {
-                cart.forEach(item => {
-                    totalPayable += item.price * item.quantity;
-                    count += item.quantity;
-
-                    const div = document.createElement('div');
-                    div.className = 'flex justify-between items-center bg-gray-50 p-4 rounded-xl border border-gray-150';
-                    div.innerHTML = `
-                        <div>
-                            <p class="font-bold text-gray-900">${item.name}</p>
-                            <p class="text-xs text-gray-500">$${item.price.toFixed(2)} x ${item.quantity}</p>
-                        </div>
-                        <p class="font-bold text-emerald-600">$${(item.price * item.quantity).toFixed(2)}</p>
-                    `;
-                    container.appendChild(div);
-                });
-            }
-
-            cartCount.innerText = count;
-            cartTotal.innerText = `$${totalPayable.toFixed(2)}`;
-            checkoutPayable.innerText = `$${totalPayable.toFixed(2)}`;
+            const nameField = document.getElementById('auth-name').closest('div');
+            if(!isSignUpMode) nameField.classList.add('hidden');
+            else nameField.classList.remove('hidden');
         }
 
-        function filterCategory(category) {
-            const items = document.querySelectorAll('.product-item');
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            const buttons = document.querySelectorAll('.cat-btn');
-            buttons.forEach(btn => {
-                btn.className = "cat-btn bg-white text-gray-600 border border-gray-200 px-6 py-2.5 rounded-full font-semibold hover:border-emerald-500 cursor-pointer transition";
-            });
-            event.target.className = "cat-btn bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-xs cursor-pointer transition";
-        }
-
-        function updatePaymentDetails(method) {
-            const infoBox = document.getElementById('gateway-info-box');
-            infoBox.classList.remove('hidden');
-            
-            let htmlContent = '';
-            if (method === 'bKash') {
-                htmlContent = `<strong>CHANNEL: bKash International Remit Node</strong><br>Merchant Account: +88017XXXXXXXX<br>Instruction: Please complete your wallet payment. Include your name/invoice sequence inside the optional reference element field.`;
-            } else if (method === 'Nagad') {
-                htmlContent = `<strong>CHANNEL: Nagad Business Clearing</strong><br>Merchant Account: +88019XXXXXXXX<br>Instruction: Execute automated checkout terminal processes using the corporate merchant destination identity.`;
-            } else if (method === 'Bank') {
-                htmlContent = `<strong>CHANNEL: Corporate SWIFT Wire Transfer</strong><br>Institution: International Commerce & Settlement Bank Ltd.<br>Account Protocol: 9874-2311-5432-110<br>Routing Node: 02026115`;
-            } else if (method === 'USDT') {
-                htmlContent = `<strong>CHANNEL: Stablecoin Ledger Protocol (TRC20 Network)</strong><br>Cryptographic Address Wallet: <span class="text-amber-400 font-mono select-all">TY3wR8fJk89SmdM1Xz82K91LaPqWsX4z2A</span><br>Warning: Transfer via alternative network infrastructure assets will cause definitive operational asset loss.`;
-            }
-            infoBox.innerHTML = htmlContent;
-        }
-
-        function handleOrderSubmit(event) {
+        function handleAuth(event) {
             event.preventDefault();
-            if (totalPayable === 0) {
-                alert('Validation Failure: Balance requirements show 0.00 base values. Please catalog system items to your active summary node.');
+            const email = document.getElementById('auth-email').value.trim();
+            const password = document.getElementById('auth-pass').value;
+            const name = document.getElementById('auth-name').value.trim();
+
+            if (!email.toLowerCase().endsWith('@gmail.com')) {
+                alert('Validation Error: Only valid Gmail configurations are processed.');
                 return;
             }
-            const trxId = document.getElementById('trx-id').value;
-            alert(`Audit Completed: Balance verification process sequence initiated successfully.\nReference: ${trxId}\nOur billing department will process shipment verification.`);
-            
-            cart = [];
-            updateCartUI();
-            document.getElementById('orderForm').reset();
-            document.getElementById('gateway-info-box').classList.add('hidden');
+
+            if (isSignUpMode) {
+                if (usersDb.some(u => u.email === email)) {
+                    alert('Error: This Gmail identity is already linked to a network node.');
+                    return;
+                }
+                const generatedUID = 'HD-NET-' + Math.floor(100000 + Math.random() * 900000);
+                const newUser = { uid: generatedUID, name: name, email: email, password: password, usdBalance: 0.00, isAdmin: false };
+                
+                usersDb.push(newUser);
+                localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+                activeUser = newUser;
+                alert('Success: Genuine Network Node & Digital Identity Created!');
+            } else {
+                const verifiedMatch = usersDb.find(u => u.email === email && u.password === password);
+                if (!verifiedMatch) {
+                    alert('Authentication Rejection: Identity key records mismatched.');
+                    return;
+                }
+                activeUser = verifiedMatch;
+            }
+
+            sessionStorage.setItem('hd_finance_session', JSON.stringify(activeUser));
+            document.getElementById('authForm').reset();
+            evaluateApplicationSessionState();
         }
-### 💡 How to update this on GitHub:
-1. Go directly to your repository main page: **[Your GitHub Repository](https://github.com/bigojononlineshopping-cmd/bigojon-shopping-mart-international)**
-2. Click on the file named **`README.md`**.
-3. Click the **Pencil Icon ✏️** to edit it.
-4. Replace all text with the code box above.
-5. Scroll down and click the green **Commit changes** button.
+
+        function convertDigitToUsd() {
+            const digitInput = document.getElementById('digit-input');
+            const digitValue = parseFloat(digitInput.value);
+
+            if (isNaN(digitValue) || digitValue <= 0) {
+                alert('Invalid Data: Please enter a valid number of Digits.');
+                return;
+            }
+
+            // CORE LOGIC: 1 Digit transforms directly into 1 USD Balance Node
+            usersDb = usersDb.map(user => {
+                if (user.uid === activeUser.uid) {
+                    user.usdBalance = (user.usdBalance || 0) + digitValue;
+                    activeUser = user;
+                }
+                return user;
+            });
+
+            localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+            sessionStorage.setItem('hd_finance_session', JSON.stringify(activeUser));
+            
+            alert(`Conversion Complete: ${digitValue} Digits successfully converted to $${digitValue.toFixed(2)} USD Balance!`);
+            digitInput.value = '';
+            evaluateApplicationSessionState();
+        }
+
+        function triggerCashout() {
+            if (activeUser.usdBalance <= 0) {
+                alert('Payout Alert: You do not have enough converted USD balance to withdraw.');
+                return;
+            }
+
+            const cashoutAmountBDT = activeUser.usdBalance * BDT_CONVERSION_RATE;
+            alert(`Cash Out Success: $${activeUser.usdBalance.toFixed(2)} USD successfully processed. You will receive ${cashoutAmountBDT.toLocaleString()} Taka (BDT) via local payment agent!`);
+
+            usersDb = usersDb.map(user => {
+                if (user.uid === activeUser.uid) {
+                    user.usdBalance = 0.00;
+                    activeUser = user;
+                }
+                return user;
+            });
+
+            localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+            sessionStorage.setItem('hd_finance_session', JSON.stringify(activeUser));
+            evaluateApplicationSessionState();
+        }
+
+        function evaluateApplicationSessionState() {
+            const authView = document.getElementById('auth-section');
+            const dashboardView = document.getElementById('dashboard-core');
+            const topHeaderBadge = document.getElementById('header-user-status');
+            const adminBtn = document.getElementById('admin-toggle-btn');
+
+            if (activeUser) {
+                authView.classList.add('hidden');
+                dashboardView.classList.remove('hidden');
+                
+                topHeaderBadge.innerHTML = `<span class="bg-emerald-100 text-emerald-950 text-[10px] font-black px-2.5 py-1 rounded-lg border border-emerald-200 uppercase"><i class="fa-solid fa-link mr-1"></i> Connected</span>`;
+                
+                document.getElementById('user-display-name').innerText = activeUser.name;
+                document.getElementById('user-display-id').innerText = `NETWORK UID: ${activeUser.uid}`;
+                document.getElementById('user-usd-balance').innerText = `$${activeUser.usdBalance.toFixed(2)} USD`;
+                
+                const calculatedBDT = activeUser.usdBalance * BDT_CONVERSION_RATE;
+                document.getElementById('bdt-valuation').innerText = `Est Value: ${calculatedBDT.toLocaleString()} BDT (@120)`;
+
+                if(activeUser.isAdmin) {
+                    adminBtn.classList.remove('hidden');
+                    populateAdminTable();
+                } else {
+                    adminBtn.classList.add('hidden');
+                    document.getElementById('admin-panel-section').classList.add('hidden');
+                }
+            } else {
+                authView.classList.remove('hidden');
+                dashboardView.classList.add('hidden');
+                adminBtn.classList.add('hidden');
+                topHeaderBadge.innerHTML = `<span class="text-slate-400 font-bold text-[10px] uppercase bg-slate-100 px-2.5 py-1 rounded border border-slate-200">Standby</span>`;
+            }
+        }
+
+        function toggleAdminPanel() {
+            const adminPanel = document.getElementById('admin-panel-section');
+            adminPanel.classList.toggle('hidden');
+        }
+
+        function populateAdminTable() {
+            const tableBody = document.getElementById('admin-users-table');
+            tableBody.innerHTML = '';
+
+            usersDb.forEach(user => {
+                if(user.isAdmin) return; // Hide admin from list
+                
+                const row = document.createElement('tr');
+                row.className = 'border-b border-slate-100 font-medium hover:bg-slate-100/50';
+                row.innerHTML = `
+                    <td class="py-3 font-bold">${user.name}</td>
+                    <td class="py-3 font-mono text-slate-600">${user.email}</td>
+                    <td class="py-3 font-mono"><span class="bg-slate-200 text-slate-800 text-[10px] px-1.5 py-0.5 rounded">${user.uid}</span></td>
+                    <td class="py-3 font-mono text-right font-bold text-emerald-600">$${user.usdBalance.toFixed(2)}</td>
+                    <td class="py-3 text-center">
+                        <button onclick="deleteNetworkNodeByAdmin('${user.uid}')" class="bg-red-100 hover:bg-red-200 text-red-700 text-[10px] font-black px-2 py-1 rounded cursor-pointer transition uppercase">
+                            <i class="fa-solid fa-trash-can"></i> Delete ID
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function deleteNetworkNodeByAdmin(uid) {
+            if(confirm(`⚠️ WARNING: আপনি কি নিশ্চিত যে আপনি [${uid}] আইডিটি সম্পূর্ণ ডিলিট করতে চান? এই ইউজারের পার্সোনাল ডিজিটাল আইডি নেটওয়ার্ক থেকে চিরতরে মুছে যাবে!`)) {
+                usersDb = usersDb.filter(u => u.uid !== uid);
+                localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+                alert(`Node Deleted: ${uid} has been purged from the HD Finance Network architecture.`);
+                populateAdminTable();
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('hd_finance_session');
+            activeUser = null;
+            evaluateApplicationSessionState();
+        }
     </script>
-</body><!-- Payment Node Selector -->
-<div>
-    <label class="block text-sm font-bold text-gray-700 mb-2">Select Remittance Channel</label>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
-            <input type="radio" name="gateway" value="bKash" required class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('bKash')">
-            bKash
-        </label>
-        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
-            <input type="radio" name="gateway" value="Nagad" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('Nagad')">
-            Nagad
-        </label>
-        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
-            <input type="radio" name="gateway" value="USDT" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('USDT')">
-            USDT (TRC20)
-        </label>
-        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
-            <input type="radio" name="gateway" value="BTC" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('BTC')">
-            Bitcoin (BTC)
-        </label>
-        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
-            <input type="radio" name="gateway" value="ETH" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('ETH')">
-            Ethereum (ETH)
-        </label>
-        <label class="border border-gray-200 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer hover:border-emerald-500 font-bold bg-white text-xs tracking-wider uppercase shadow-xs">
-            <input type="radio" name="gateway" value="BNB" class="mb-2 accent-emerald-600" onchange="updatePaymentDetails('BNB')">
-            BNB (BSC)
-        </label>
-    </div>function updatePaymentDetails(method) {
-    const infoBox = document.getElementById('gateway-info-box');
-    infoBox.classList.remove('hidden');
-    
-    let htmlContent = '';
-    if (method === 'bKash') {
-        htmlContent = `<strong>CHANNEL: bKash International Remit Node</strong><br>Merchant Account: +88017XXXXXXXX<br>Instruction: Please complete your wallet payment.`;
-    } else if (method === 'Nagad') {
-        htmlContent = `<strong>CHANNEL: Nagad Business Clearing</strong><br>Merchant Account: +88019XXXXXXXX<br>Instruction: Execute automated checkout terminal processes.`;
-    } else if (method === 'USDT') {
-        htmlContent = `<strong>CHANNEL: USDT Stablecoin (TRC20 Network)</strong><br>Wallet Address: <span class="text-amber-400 font-mono select-all">TY3wR8fJk89SmdM1Xz82K91LaPqWsX4z2A</span><br>Warning: Only send USDT via TRC20 network.`;
-    } else if (method === 'BTC') {
-        htmlContent = `<strong>CHANNEL: Bitcoin Network (BTC)</strong><br>Wallet Address: <span class="text-amber-400 font-mono select-all">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</span><br>Instruction: Send the exact dollar equivalent in BTC to this address.`;
-    } else if (method === 'ETH') {
-        htmlContent = `<strong>CHANNEL: Ethereum Network (ERC20)</strong><br>Wallet Address: <span class="text-amber-400 font-mono select-all">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</span><br>Instruction: Double-check network parameters before confirming transmission.`;
-    } else if (method === 'BNB') {
-        htmlContent = `<strong>CHANNEL: Binance Smart Chain (BEP20)</strong><br>Wallet Address: <span class="text-amber-400 font-mono select-all">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</span><br>Instruction: Ensure you use the BSC (BEP20) network node to avoid asset loss.`;
-    }
-    infoBox.innerHTML = htmlContent;
-}
-
-</div>
-
-</html>
-
+</body>
 </html>
