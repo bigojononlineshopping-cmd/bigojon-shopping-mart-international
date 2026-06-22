@@ -348,5 +348,75 @@ function processWithdrawal(uid) {
     }
 }
 
-</body>
+</body><!-- SYSTEM EXTENSION: MARKET PLUS & PAYMENT GATEWAY -->
+<section id="extension-module" class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-slate-200">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- MARKET PLUS SECTION -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <h3 class="text-xl font-black text-slate-900 mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-cart-shopping text-emerald-600"></i> Market Plus
+            </h3>
+            <div id="market-plus-gallery" class="grid grid-cols-2 gap-4">
+                <!-- Market Items -->
+                <div class="p-4 border rounded-xl hover:border-emerald-500 transition cursor-pointer">
+                    <div class="h-20 bg-slate-100 rounded-lg mb-3"></div>
+                    <p class="font-bold text-xs">Cloud Node Pro</p>
+                    <p class="text-emerald-600 font-black text-sm">$50.00 USD</p>
+                </div>
+                <div class="p-4 border rounded-xl hover:border-emerald-500 transition cursor-pointer">
+                    <div class="h-20 bg-slate-100 rounded-lg mb-3"></div>
+                    <p class="font-bold text-xs">Growth Pack</p>
+                    <p class="text-emerald-600 font-black text-sm">$100.00 USD</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAYMENT GATEWAY SECTION -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <h3 class="text-xl font-black text-slate-900 mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-building-columns text-blue-600"></i> Payment Gateway
+            </h3>
+            <div class="grid grid-cols-1 gap-3">
+                <button onclick="handlePayment('Bkash')" class="w-full flex items-center justify-between p-4 bg-pink-50 border border-pink-100 rounded-xl font-bold text-pink-700 hover:bg-pink-100 transition">
+                    <span>Pay with Bkash</span> <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <button onclick="handlePayment('Nagad')" class="w-full flex items-center justify-between p-4 bg-orange-50 border border-orange-100 rounded-xl font-bold text-orange-700 hover:bg-orange-100 transition">
+                    <span>Pay with Nagad</span> <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <button onclick="handlePayment('Bank')" class="w-full flex items-center justify-between p-4 bg-blue-50 border border-blue-100 rounded-xl font-bold text-blue-700 hover:bg-blue-100 transition">
+                    <span>Bank Transfer</span> <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Payment Gateway Interaction
+    function handlePayment(method) {
+        alert(`Redirecting to ${method} secure gateway for transaction processing...`);
+    }
+
+    // Admin Lottery & Withdrawal Verification Logic
+    function adminAction(type, uid) {
+        const user = usersDb.find(u => u.uid === uid);
+        if(!user) return;
+
+        if(type === 'LOTTERY') {
+            const bonus = Math.floor(Math.random() * 10) + 1;
+            user.usdBalance += bonus;
+            alert(`🎉 Lottery Result: $${bonus} USD bonus awarded to ${user.name}!`);
+        } 
+        else if(type === 'WITHDRAW') {
+            if(confirm(`Approve $${user.usdBalance.toFixed(2)} USD withdrawal for ${user.name}?`)) {
+                user.usdBalance = 0;
+                alert(`✅ Payment success! Record for ${user.name} cleared.`);
+            }
+        }
+        localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+        if(typeof populateAdminTable === 'function') populateAdminTable();
+    }
+</script>
+
 </html>
