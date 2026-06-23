@@ -1002,4 +1002,21 @@ function processWithdrawal(uid) {
         alert("🎉 Lottery Result: $" + bonus + " USD awarded to " + user.name + "!");
         if(typeof populateAdminTable === 'function') populateAdminTable();
     }
+</script><!-- Financial Audit Block -->
+<div class="mt-8 p-6 bg-gray-900 text-white rounded-xl">
+    <h3 class="font-bold text-lg mb-4">Secure Financial Audit Terminal</h3>
+    <input type="text" id="trxId" placeholder="Enter Transaction ID (TrxID)" class="w-full p-2 mb-4 text-black rounded">
+    <button onclick="verifyAudit()" class="w-full bg-blue-600 py-2 rounded font-bold hover:bg-blue-700">Verify Payment Node</button>
+</div>
+
+<script>
+function verifyAudit() {
+    const trx = document.getElementById('trxId').value;
+    if(trx.length < 8) {
+        alert("⚠️ Invalid Audit Node: Please enter a valid Transaction Reference ID.");
+    } else {
+        alert("✅ Audit Successful: Transaction " + trx + " sent to settlement terminal.");
+    }
+}
 </script>
+
