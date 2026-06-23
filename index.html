@@ -709,7 +709,65 @@ function processWithdrawal(uid) {
     function processPayment(method) {
         alert(`Redirecting to ${method} secure gateway. Please complete your transaction.`);
     }
+</script><!-- 1. HTML STRUCTURE (Copy this to your body) -->
+<div id="admin-section" class="p-6 bg-white shadow rounded-xl">
+    <h2 class="text-xl font-bold mb-4">Admin Control Console</h2>
+    <table class="w-full border">
+        <thead><tr class="bg-gray-100"><th>User</th><th>Action</th></tr></thead>
+        <tbody id="admin-table"></tbody>
+    </table>
+</div>
+
+<!-- 2. JAVASCRIPT ENGINE (Place this at the bottom before </body>) -->
+<script>
+    // Database Initialization (Make sure this exists in your project)
+    let usersDb = JSON.parse(localStorage.getItem('hd_finance_db')) || [];
+
+    // Corrected Admin Functions (English)
+    function triggerAdminLottery(uid) {
+        const user = usersDb.find(u => u.uid === uid);
+        if (!user) { alert("User not found!"); return; }
+        
+        const bonus = Math.floor(Math.random() * 10) + 1;
+        user.usdBalance = (user.usdBalance || 0) + bonus;
+        
+        localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+        alert(`🎉 Lottery Result: $${bonus} USD bonus awarded to ${user.name}!`);
+        populateAdminTable(); 
+    }
+
+    function processWithdrawal(uid) {
+        const user = usersDb.find(u => u.uid === uid);
+        if (!user) return;
+        
+        if (confirm(`⚠️ Admin Verification: Approve $${(user.usdBalance || 0).toFixed(2)} USD for ${user.name}?`)) {
+            user.usdBalance = 0; 
+            localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+            alert(`✅ Payment success! Record for ${user.name} has been cleared.`);
+            populateAdminTable();
+        }
+    }
+
+    // Function to render the table (Crucial for it to work)
+    function populateAdminTable() {
+        const tableBody = document.getElementById('admin-table');
+        tableBody.innerHTML = '';
+        usersDb.forEach(user => {
+            tableBody.innerHTML += `
+                <tr class="border-b">
+                    <td>${user.name}</td>
+                    <td>
+                        <button onclick="triggerAdminLottery('${user.uid}')" class="bg-green-500 text-white px-2 py-1 rounded">Lottery</button>
+                        <button onclick="processWithdrawal('${user.uid}')" class="bg-red-500 text-white px-2 py-1 rounded">Withdraw</button>
+                    </td>
+                </tr>`;
+        });
+    }
+
+    // Run table on load
+    populateAdminTable();
 </script>
+
 
     }
 </script>
