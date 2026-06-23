@@ -772,3 +772,39 @@ function processWithdrawal(uid) {
     }
 </script>
 
+<!-- Marketplace Interface -->
+<section class="max-w-6xl mx-auto p-6">
+    <h2 class="text-2xl font-bold mb-6">Market Plus - Exclusive Digital Assets</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Product 1 -->
+        <div class="border rounded-2xl p-4 shadow-sm hover:shadow-lg transition">
+            <div class="h-32 bg-gray-200 rounded-xl mb-4"></div>
+            <h3 class="font-bold">Cloud Node Pro</h3>
+            <p class="text-green-600 font-black">$50.00 USD</p>
+            <button onclick="buyProduct('Cloud Node Pro', 50)" class="mt-3 w-full bg-black text-white py-2 rounded-lg">Buy Now</button>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="border rounded-2xl p-4 shadow-sm hover:shadow-lg transition">
+            <div class="h-32 bg-gray-200 rounded-xl mb-4"></div>
+            <h3 class="font-bold">Growth Pack</h3>
+            <p class="text-green-600 font-black">$100.00 USD</p>
+            <button onclick="buyProduct('Growth Pack', 100)" class="mt-3 w-full bg-black text-white py-2 rounded-lg">Buy Now</button>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="border rounded-2xl p-4 shadow-sm hover:shadow-lg transition">
+            <div class="h-32 bg-gray-200 rounded-xl mb-4"></div>
+            <h3 class="font-bold">Security Key</h3>
+            <p class="text-green-600 font-black">$20.00 USD</p>
+            <button onclick="buyProduct('Security Key', 20)" class="mt-3 w-full bg-black text-white py-2 rounded-lg">Buy Now</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    function buyProduct(name, price) {
+        alert("You have selected: " + name + ". Please proceed to Payment Gateway to complete your $ " + price + " USD transaction.");
+    }
+</script>
