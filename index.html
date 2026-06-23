@@ -1028,5 +1028,28 @@ function calculateCommission(orderAmount) {
 function handleReferral(referrerId) {
     // 
  alert("User signed up using referral ID: " + referrerId);
-}
+}<!-- Marketplace Interface -->
+<section id="marketplace" class="p-6">
+    <h2 class="text-2xl font-bold uppercase">Global Market Plus</h2>
+    
+    <!-- Category: Cosmetics -->
+    <div class="category-section mt-6">
+        <h3 class="font-bold text-lg text-pink-600">Cosmetic Collection</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
+            <!-- Product Uploaded via Gallery System -->
+            <div class="card border p-2">
+                <img src="lipstick.jpg" alt="Cosmetic">
+                <p>Premium Lipstick - $15.00</p>
+                <button onclick="addToCart('Lipstick', 15)" class="bg-black text-white w-full">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category: Poshak (Clothing) -->
+    <div class="category-section mt-6">
+        <h3 class="font-bold text-lg text-blue-600">Poshak (Fashion)</h3>
+        <!-- Poshak items here -->
+    </div>
+</section>
+0p0
 
