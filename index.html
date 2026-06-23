@@ -808,3 +808,61 @@ function processWithdrawal(uid) {
         alert("You have selected: " + name + ". Please proceed to Payment Gateway to complete your $ " + price + " USD transaction.");
     }
 </script>
+<!-- SYSTEM EXTENSION: MARKET PLUS & GATEWAY -->
+<div id="extension-container" class="max-w-6xl mx-auto px-4 py-8 mt-10 border-t border-slate-200">
+    
+    <!-- Market Plus Section -->
+    <h2 class="text-2xl font-black mb-6">Market Plus - Exclusive Digital Assets</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <!-- Cloud Node Pro -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+            <h3 class="font-bold">Cloud Node Pro</h3>
+            <p class="text-emerald-600 font-black text-xl">$50.00 USD</p>
+            <button onclick="purchaseItem('Cloud Node Pro', 50)" class="mt-4 w-full bg-slate-900 text-white py-2 rounded-lg font-bold">Buy Now</button>
+        </div>
+        <!-- Growth Pack -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+            <h3 class="font-bold">Growth Pack</h3>
+            <p class="text-emerald-600 font-black text-xl">$100.00 USD</p>
+            <button onclick="purchaseItem('Growth Pack', 100)" class="mt-4 w-full bg-slate-900 text-white py-2 rounded-lg font-bold">Buy Now</button>
+        </div>
+        <!-- Security Key -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+            <h3 class="font-bold">Security Key</h3>
+            <p class="text-emerald-600 font-black text-xl">$20.00 USD</p>
+            <button onclick="purchaseItem('Security Key', 20)" class="mt-4 w-full bg-slate-900 text-white py-2 rounded-lg font-bold">Buy Now</button>
+        </div>
+    </div>
+
+    <!-- Payment Gateway Section -->
+    <div class="bg-slate-900 p-8 rounded-2xl text-white">
+        <h3 class="font-bold text-lg mb-6 uppercase tracking-wider">Payment Gateway</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button onclick="processPayment('Bkash')" class="p-4 bg-pink-600 rounded-xl font-bold hover:bg-pink-700 transition">Pay with Bkash</button>
+            <button onclick="processPayment('Nagad')" class="p-4 bg-orange-600 rounded-xl font-bold hover:bg-orange-700 transition">Pay with Nagad</button>
+            <button onclick="processPayment('Bank Transfer')" class="p-4 bg-blue-600 rounded-xl font-bold hover:bg-blue-700 transition">Bank Transfer</button>
+        </div>
+    </div>
+</div>
+
+<!-- INTEGRATED LOGIC -->
+<script>
+    function purchaseItem(name, price) {
+        alert("Selection: " + name + " - Price: $" + price + " USD. Please choose a Payment Method below.");
+    }
+
+    function processPayment(method) {
+        alert("Redirecting to " + method + " secure gateway...");
+    }
+
+    // Admin Panel Logic (Kept for integration)
+    function triggerAdminLottery(uid) {
+        const user = usersDb.find(u => u.uid === uid);
+        if (!user) return;
+        const bonus = Math.floor(Math.random() * 10) + 1;
+        user.usdBalance += bonus;
+        localStorage.setItem('hd_finance_db', JSON.stringify(usersDb));
+        alert("🎉 Lottery Result: $" + bonus + " USD awarded to " + user.name + "!");
+        if(typeof populateAdminTable === 'function') populateAdminTable();
+    }
+</script>
